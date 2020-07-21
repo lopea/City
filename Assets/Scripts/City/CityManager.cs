@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class CityManager : MonoBehaviour
 {
+    public GameObject prefab;
 
-    
-    private void Start()
+
+    private void Awake()
     {
-        for (int i = 0; i < 10; i++)
+        for(int i = 0; i < 10; i ++)
         {
-            for(int j = 0; j < 20; j ++)
+            for(int j = 0; j < 10; j ++)
             {
-                var instance= GameObject.CreatePrimitive(PrimitiveType.Cube);
-
-                instance.transform.localScale =new Vector3(1,Random.Range(1 , 10),1);
-                instance.transform.position = new Vector3(i,0,j);
+                var inst = Instantiate(prefab,new Vector3(i, 0, j), Quaternion.identity);
+                inst.transform.localScale = new Vector3(1,Random.Range(0,10), 1);
             }
         }
     }
